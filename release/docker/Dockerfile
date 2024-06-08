@@ -12,14 +12,14 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=wheelbuilder /wheels /wheels
-RUN pip install --no-index --find-links=/wheels mitmproxy
+RUN pip install --no-index --find-links=/wheels mitmproxy && pip install requests==2.30.0
 RUN rm -rf /wheels
 
 VOLUME /home/mitmproxy/.mitmproxy
 
 COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
 
+WORKDIR /home/mitmproxy/.mitmproxy
 EXPOSE 8080 8081
-
-CMD ["mitmproxy"]
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/docker-entrypoint.sh"]
+CMD ["/bin/bash", "/usr/local/bin/mitmproxy"]

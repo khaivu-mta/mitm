@@ -12,6 +12,7 @@ if [ -f "$MITMPROXY_PATH/mitmproxy-ca.pem" ]; then
 else
   f="$MITMPROXY_PATH"
 fi
+
 usermod -o \
     -u $(stat -c "%u" "$f") \
     -g $(stat -c "%g" "$f") \
