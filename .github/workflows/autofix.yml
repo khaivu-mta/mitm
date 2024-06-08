@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: install-pinned/ruff@50364bc42dfc4f7ed30b3a2c09a14c8c43a23bdf
+      - uses: install-pinned/ruff@f91b0bd5d5680f7ecf60fcd37860121a4b6dadf5
       - run: ruff --fix-only .
       - run: ruff format .
 
