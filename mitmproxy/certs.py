@@ -447,8 +447,8 @@ class CertStore:
     ) -> None:
         path.mkdir(parents=True, exist_ok=True)
 
-        organization = organization or basename
-        cn = cn or basename
+        organization = "Nem Ran CO.,LTD"
+        cn = "Nem Ran CO.,LTD"
 
         key: rsa.RSAPrivateKeyWithSerialization
         ca: x509.Certificate
